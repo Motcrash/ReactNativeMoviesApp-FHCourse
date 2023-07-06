@@ -8,6 +8,7 @@ const Stack = createStackNavigator();
 export const  StackNav = () => {
   return (
     <Stack.Navigator
+        initialRouteName='HomeScreen'
         screenOptions={{
             headerShown: false,
             cardStyle: {
