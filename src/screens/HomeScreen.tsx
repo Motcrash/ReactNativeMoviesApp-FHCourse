@@ -1,18 +1,18 @@
 import React from 'react'
 import Carousel from 'react-native-snap-carousel';
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { ActivityIndicator, View, FlatList, ScrollView} from 'react-native';
+import { ActivityIndicator, View, ScrollView} from 'react-native';
+import { Dimensions } from 'react-native';
+
 import { useMovies } from '../hooks/useMovies';
 import { MoviePoster } from '../components/MoviePoster';
-import { Dimensions } from 'react-native';
-import { Text } from 'react-native';
 import { HorizontalSlider } from '../components/HorizontalSlider';
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
 
 export default function HomeScreen() {
 
-    const { isLoading, moviesPlaying } = useMovies();
+    const { isLoading, topRated, upcoming, nowPlaying } = useMovies();
     const { top } = useSafeAreaInsets()
 
     if ( isLoading ) {
@@ -32,7 +32,7 @@ export default function HomeScreen() {
                 {/* Main Carousel */}
                 <View style={{ height: 450}}>
                     <Carousel
-                        data={ moviesPlaying }
+                        data={ nowPlaying }
                         renderItem={ ({ item }: any) => <MoviePoster movie={ item }/> }
                         sliderWidth={ windowWidth }
                         itemWidth={ 300 }
@@ -41,7 +41,8 @@ export default function HomeScreen() {
                 </View>
 
                 {/* Popular Movies */}
-                <HorizontalSlider title="On teather" movies={moviesPlaying} />
+                <HorizontalSlider title="Top rated" movies={ topRated } />
+                <HorizontalSlider title="Upcoming" movies={ upcoming } />
             </View>
        </ScrollView>
     )
