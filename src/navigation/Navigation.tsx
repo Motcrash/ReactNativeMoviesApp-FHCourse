@@ -1,9 +1,16 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { DetailScreen } from '../screens/DetailScreen';
-import HomeScreen from '../screens/HomeScreen';
 
-const Stack = createStackNavigator();
+import { DetailsScreen } from '../screens/DetailsScreen';
+import HomeScreen from '../screens/HomeScreen';
+import { Movie } from '../interfaces/MovieInterface';
+
+export type RouteStackParams = {
+  HomeScreen: undefined,
+  DetailsScreen: Movie,
+}
+
+const Stack = createStackNavigator<RouteStackParams>();
 
 export const  StackNav = () => {
   return (
@@ -11,13 +18,10 @@ export const  StackNav = () => {
         initialRouteName='HomeScreen'
         screenOptions={{
             headerShown: false,
-            cardStyle: {
-                backgroundColor: 'white'
-            }
         }}
     >
       <Stack.Screen name="HomeScreen" component={ HomeScreen } />
-      <Stack.Screen name="DetailScreen" component={ DetailScreen } />
+      <Stack.Screen name="DetailsScreen" component={ DetailsScreen } />
     </Stack.Navigator>
   );
 }
