@@ -7,6 +7,7 @@ import { Dimensions } from 'react-native';
 import { useMovies } from '../hooks/useMovies';
 import { MoviePoster } from '../components/MoviePoster';
 import { HorizontalSlider } from '../components/HorizontalSlider';
+import { GradientBackground } from '../components/GradientBackground';
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get('window')
 
@@ -24,26 +25,28 @@ export default function HomeScreen() {
     }
 
     return (
-       <ScrollView style={{ flex: 1}}>
-            <View style = {{
-                marginTop: top + 20,
-                flex: 1
-            }}>
-                {/* Main Carousel */}
-                <View style={{ height: 450}}>
-                    <Carousel
-                        data={ nowPlaying }
-                        renderItem={ ({ item }: any) => <MoviePoster movie={ item }/> }
-                        sliderWidth={ windowWidth }
-                        itemWidth={ 300 }
-                        inactiveSlideOpacity={0.8}
-                    /> 
-                </View>
+       <GradientBackground>
+            <ScrollView style={{ flex: 1}}>
+                <View style = {{
+                    marginTop: top + 20,
+                    flex: 1
+                }}>
+                    {/* Main Carousel */}
+                    <View style={{ height: 450}}>
+                        <Carousel
+                            data={ nowPlaying }
+                            renderItem={ ({ item }: any) => <MoviePoster movie={ item }/> }
+                            sliderWidth={ windowWidth }
+                            itemWidth={ 300 }
+                            inactiveSlideOpacity={0.8}
+                        /> 
+                    </View>
 
-                {/* Popular Movies */}
-                <HorizontalSlider title="Top rated" movies={ topRated } />
-                <HorizontalSlider title="Upcoming" movies={ upcoming } />
-            </View>
-       </ScrollView>
+                    {/* Popular Movies */}
+                    <HorizontalSlider title="Top rated" movies={ topRated } />
+                    <HorizontalSlider title="Upcoming" movies={ upcoming } />
+                </View>
+            </ScrollView>
+       </GradientBackground>
     )
 }
