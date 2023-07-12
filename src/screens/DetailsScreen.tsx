@@ -19,7 +19,7 @@ export const DetailsScreen = ( { route, navigation }: Props) => {
   return (
     <ScrollView >
 
-      <View>
+      <View style = {{ backgroundColor: '#f2e9e1' }}>
         {
           isLoading 
             ?  <View style={{

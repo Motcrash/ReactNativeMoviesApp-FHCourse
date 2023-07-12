@@ -10,6 +10,7 @@ import { RouteStackParams } from '../navigation/Navigation';
 import { RouteProp } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StackNavigationProp } from '@react-navigation/stack';
+import LinearGradient from 'react-native-linear-gradient';
 
 const screenHeight = Dimensions.get('screen').height;
 
@@ -75,6 +76,12 @@ export const MovieDetails = ({ fullMovie, cast, route, navigation }: Props ) => 
                 /> 
             </View>
 
+            <LinearGradient
+                colors={[ 'black', 'transparent']}
+                style={{ ...StyleSheet.absoluteFillObject }}
+                start={{ x: 0, y: 0}}
+                end={{x: 0.1, y: 0.2}}
+            />
             <View style= {styles.backButtonContainer }>
                 <TouchableOpacity
                     onPress={() => navigation.pop() }
@@ -93,7 +100,7 @@ export const MovieDetails = ({ fullMovie, cast, route, navigation }: Props ) => 
 
 const styles = StyleSheet.create({
     globalMargin: {
-        marginHorizontal: 10
+        marginHorizontal: 15
     },
     imageContainer: {
       width: '100%',
@@ -121,7 +128,7 @@ const styles = StyleSheet.create({
     marginContainer:{
         alignItems: 'center',
         marginTop: 20,
-        marginBottom: 15
+        marginBottom: 15,
       },
       subtitle: {
         fontSize: 16,
@@ -134,6 +141,6 @@ const styles = StyleSheet.create({
       backButtonContainer: {
         position: 'absolute',
         width: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        // backgroundColor: 'rgba(0, 0, 0, 0.5)',
       },
 });
