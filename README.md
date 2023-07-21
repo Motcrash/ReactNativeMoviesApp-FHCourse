@@ -12,7 +12,7 @@ If you want to try the app just download the project and execute the following c
 
 First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+To start Metro, run the following command from the _root_ of the project:
 
 ```bash
 # On android
